@@ -15,8 +15,13 @@ namespace Full_GRASP_And_SOLID
 
         public Product FinalProduct { get; set; }
 
-        public void AddStep(Step step)
+        /*
+        Esta clase crea objetos de Step 
+        porque esta clase guarda una lista de steps
+        */
+        public void AddStep(Product input, int quantity, Equipment equipment, int time) 
         {
+            Step step = new Step(input, quantity, equipment, time);
             this.steps.Add(step);
         }
 
@@ -26,7 +31,7 @@ namespace Full_GRASP_And_SOLID
         }
 
         // Agregado por SRP
-        public string GetTextToPrint()
+        public string GetTextToPrint() 
         {
             string result = $"Receta de {this.FinalProduct.Description}:\n";
             foreach (Step step in this.steps)
